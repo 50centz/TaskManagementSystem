@@ -1,7 +1,8 @@
 package com.example.TaskManagementSystem.models;
 
-import com.example.TaskManagementSystem.enums.Priority;
-import com.example.TaskManagementSystem.enums.TaskStatus;
+import com.example.TaskManagementSystem.models.enums.Priority;
+import com.example.TaskManagementSystem.models.enums.TaskStatus;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,6 +19,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Setter
 @Getter
@@ -46,10 +48,11 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User author;
 
-    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User executor;
+
 
 }

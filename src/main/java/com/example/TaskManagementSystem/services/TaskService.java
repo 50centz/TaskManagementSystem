@@ -1,14 +1,17 @@
 package com.example.TaskManagementSystem.services;
 
 import com.example.TaskManagementSystem.dto.TaskDto;
+import com.example.TaskManagementSystem.models.Task;
 
 public interface TaskService {
 
-    TaskDto findById(Long id);
+    Task findById(Long taskId);
 
     TaskDto create(TaskDto taskDto);
 
-    TaskDto update(Long taskId, TaskDto taskDto);
+    Task update(Long taskId, TaskDto taskDto);
 
-    void deleteById(long id);
+    void deleteById(long taskId);
+
+    Task updateByUser(Long taskId, TaskDto taskDto);
 }

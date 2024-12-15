@@ -18,6 +18,11 @@ spring:
     ansi:
       enabled: ALWAYS
 
+  app:
+    jwtSecret: WimJI26maddSDFHbegG1Qtl3gsC8BinoVBua6NNKU7ghh3qt8L0Egy6BpYysPlIamjZeRA
+    jwtExpirationMs: 172800000
+
+
 
 
 

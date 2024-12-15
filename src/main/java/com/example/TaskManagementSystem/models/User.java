@@ -1,7 +1,10 @@
 package com.example.TaskManagementSystem.models;
 
+import com.example.TaskManagementSystem.models.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,12 +26,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email", unique = true)
-    private String email;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
 }

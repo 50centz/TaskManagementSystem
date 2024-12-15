@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedAttributeNode;
+import jakarta.persistence.NamedEntityGraph;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +22,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "comments")
+@NamedEntityGraph(name = "comment-entity-graph", attributeNodes = {
+        @NamedAttributeNode("task")})
 public class Comment {
 
     @Id
@@ -32,33 +36,3 @@ public class Comment {
     @ManyToOne(targetEntity = Task.class, cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     private Task task;
 }
-
-
-
-
-
-
-//@Getter
-//@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Entity
-//@Table(name = "comments")
-//@EqualsAndHashCode(of = {"id"})
-//@NamedEntityGraph(name = "comment-entity-graph", attributeNodes = {
-//        @NamedAttributeNode("book")})
-//public class Comment {
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private long id;
-//
-//    @Column(name = "comment", nullable = false)
-//    private String comment;
-//
-//
-//    @ManyToOne(targetEntity = Book.class, cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "book_id")
-//    private Book book;
-//
-//}
